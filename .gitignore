@@ -123,3 +123,4 @@ FETCH_HEAD
 
 # vscode
 .vscode
+/model_zoo/uie/uie-base/
