@@ -140,6 +140,17 @@ def do_train():
                     tokenizer.save_pretrained(save_dir)
                     logger.enable()
                 tic_train = time.time()
+def addArgs(args):
+    train_path='/home/DiskA/zncsPython/paddlenlp/uie/billvalue'
+    setattr(args, 'train_path', train_path+'/data/train.txt')
+    setattr(args, 'dev_path', train_path + '/data/dev.txt')
+    setattr(args, 'save_dir', train_path + '/checkpoint')
+    setattr(args, 'batch_size', 1)
+    setattr(args, 'max_seq_len',2048)
+    setattr(args, 'num_epochs', 1)
+    setattr(args, 'model', 'uie-base')
+    setattr(args, 'device', 'gpu')
+
 
 
 if __name__ == "__main__":
@@ -162,6 +173,9 @@ if __name__ == "__main__":
     parser.add_argument("--init_from_ckpt", default=None, type=str, help="The path of model parameters for initialization.")
 
     args = parser.parse_args()
+
+    # 修改 参数。可直接运行
+    #addArgs(args)
     # yapf: enable
 
     do_train()
